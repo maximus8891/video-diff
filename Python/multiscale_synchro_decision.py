@@ -1071,7 +1071,7 @@ def dp_Alex(Vspace, numFramesR, numFramesQ, BOV_flag, PREV_REF=5, NEXT_REF=0):
         crossref[qry][1] = posRef;
 
         common.DebugPrint("qry=%d, posRef=%d" % (qry, posRef));
-        posRef = Tback[posRef, qry];
+        posRef = Tback[int(posRef), int(qry)];
 
     #!!!!time took
     #common.DebugPrint("dp_Alex(): crossref = %s" % str(crossref));

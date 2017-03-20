@@ -633,7 +633,7 @@ def TemporalAlignment(captureQ, captureR):
             #common.DebugPrint("TemporalAlignment(): harlocsR.nbytes = %s" % str(harlocsR.nbytes));
 
 
-    if config.PREPROCESS_REFERENCE_VIDEO_ONLY == False:
+    if config.PREPROCESS_REFERENCE_VIDEO_ONLY != True:
         # We compute and Store in files the multi-scale Harris features of the query video
         """
         Note: if the "harloc" files exist, load directly the features from

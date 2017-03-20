@@ -486,7 +486,7 @@ def my_nms(cim, radius, thresh):
     """
     #%% This modification runs 4x faster (11 secs less in a 6-scale approach)
     #mx = ordfilt2(cim,sze^2,ones(sze)); #% Grey-scale dilate.
-    mx = Matlab.ordfilt2(cim, pow(sze, 2), np.ones((sze, sze))); #% Grey-scale dilate.
+    mx = Matlab.ordfilt2(cim, pow(sze, 2), np.ones((int(sze), int(sze)))); #% Grey-scale dilate.
     if common.MY_DEBUG_STDOUT:
         common.DebugPrint("my_nms(): mx = %s" % str(mx));
 
@@ -509,7 +509,8 @@ def my_nms(cim, radius, thresh):
 
     #Alex: sets to 1 the matrix, except the first and last radius lines and first and last radius columns, which are left 0
     #bordermask(radius+1:end-radius, radius+1:end-radius) = 1;
-    bordermask[radius: -radius, radius: -radius] = 1;
+    rad = int(radius);
+    bordermask[rad: -rad, rad: -rad] = 1;
 
     #% Find maxima, threshold, and apply bordermask
     #cimmx = (cim==mx) & (cim>thresh) & bordermask; #%Peter-Kovesi

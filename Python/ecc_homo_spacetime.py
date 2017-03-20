@@ -1225,7 +1225,7 @@ def interp_time(volume, n):
     sub = n - bot;
 
     #wimg_time=sub*volume(:,:,top)+(1-sub)*volume(:,:,bot);
-    wimg_time = sub * volume[:, :, top - 1] + (1 - sub) * volume[:, :, bot - 1];
+    wimg_time = sub * volume[:, :, int(top - 1)] + (1 - sub) * volume[:, :, int(bot - 1)];
 
     return wimg_time;
 
@@ -1572,8 +1572,8 @@ def weights_for_ecc(a, b, grid, nonze):
         for j in range(1, grid[1] + 1):
             #%if zw(i,j)==1
             #abn=ab(round(h0)*(i-1)+1:round(h0*i),round(w0)*(j-1)+1:round(w0*j));
-            abn = ab[round(h0) * (i - 1) + 1 - 1: round(h0 * i), \
-                        round(w0) * (j - 1) + 1 - 1: round(w0 * j)];
+            abn = ab[int(round(h0) * (i - 1) + 1 - 1): int(round(h0 * i)), \
+                        int(round(w0) * (j - 1) + 1 - 1): int(round(w0 * j))];
 
             #w(i,j)=sum(abn(:));
             #w[i - 1, j - 1] = abn.ravel(order="F").sum();
@@ -1691,8 +1691,8 @@ def block_zero_mean(inArray, grid_height, grid_width):
                                             round(w0) * (j - 1) + 1 - 1: round(w0 * j), \
                                             d - 1]); # Gives: "IndexError: invalid index"
             """
-            M[i, j] = Matlab.mean2(inArray[round(h0) * i + 1 - 1: round(h0 * (i + 1)), \
-                                            round(w0) * j + 1 - 1: round(w0 * (j + 1))]);
+            M[i, j] = Matlab.mean2(inArray[int(round(h0) * i + 1 - 1): int(round(h0 * (i + 1))), \
+                                            int(round(w0) * j + 1 - 1): int(round(w0 * (j + 1)))]);
 
     #common.DebugPrint("block_zero_mean(): M (before resize) = %s" % str(M));
 
