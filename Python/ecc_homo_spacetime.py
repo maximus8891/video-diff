@@ -222,8 +222,8 @@ def MyImageRead(capture, index):
         if common.MY_DEBUG_STDOUT:
             common.DebugPrint( \
                 "MyImageRead(): ret == False --> returning black frame");
-        img = np.zeros( (ReadVideo.resVideoQ[1] * config.VIDEO_FRAME_RESIZE_SCALING_FACTOR, \
-                         ReadVideo.resVideoQ[0] * config.VIDEO_FRAME_RESIZE_SCALING_FACTOR, \
+        img = np.zeros( (int(ReadVideo.resVideoQ[1] * config.VIDEO_FRAME_RESIZE_SCALING_FACTOR), \
+                         int(ReadVideo.resVideoQ[0] * config.VIDEO_FRAME_RESIZE_SCALING_FACTOR), \
                          3), \
                             dtype=np.uint8);
     if common.MY_DEBUG_STDOUT:
